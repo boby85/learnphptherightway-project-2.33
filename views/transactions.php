@@ -35,28 +35,26 @@
             </thead>
             <tbody>
                 <?php if (! empty($transactions))
-                    $income = 0;
-                $expenses = 0;
-                foreach ($transactions as $transaction) {
-                    echo '<tr>';
-                    echo '<td>' . date('M j, Y', strtotime($transaction['t_date'])) . '</td>';
-                    echo '<td>';
-                    if ($transaction['t_check']) {
-                        echo    $transaction['t_check'];
-                    } else echo '';
-                    echo '</td>';
-                    echo '<td>' . $transaction['t_description'] . '</td>';
-                    echo '<td ';
-                    if($transaction['t_amount'] < 0) {
-                        echo 'style="color: red">';
-                        echo '-$';
-                    } else {
-                        echo '>$';
+                    foreach ($transactions as $transaction) {
+                        echo '<tr>';
+                        echo '<td>' . date('M j, Y', strtotime($transaction['t_date'])) . '</td>';
+                        echo '<td>';
+                        if ($transaction['t_check']) {
+                            echo    $transaction['t_check'];
+                        } else echo '';
+                        echo '</td>';
+                        echo '<td>' . $transaction['t_description'] . '</td>';
+                        echo '<td ';
+                        if($transaction['t_amount'] < 0) {
+                            echo 'style="color: red">';
+                            echo '-$';
+                        } else {
+                            echo '>$';
+                        }
+                        echo abs($transaction['t_amount']) . '</td>';
+                        echo '</tr>';
                     }
-                    echo abs($transaction['t_amount']) . '</td>';
-                    echo '</tr>';
-                }
-                ?>
+                    ?>
             </tbody>
             <tfoot>
                 <tr>

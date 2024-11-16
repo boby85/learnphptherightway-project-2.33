@@ -20,9 +20,9 @@ $router = new Router();
 
 $router
     ->get('/', [HomeController::class, 'index'])
-    ->get('/transactions,', [TransactionController::class, 'index'])
-    ->get('/transactions/create,', [TransactionController::class, 'create'])
-    ->get('/transactions/store,', [TransactionController::class, 'store']);
+    ->get('/transactions', [TransactionController::class, 'index'])
+    ->get('/transactions/create', [TransactionController::class, 'create'])
+    ->post('/transactions/store', [TransactionController::class, 'store']);
 
 (new App(
     $router,

@@ -10,7 +10,8 @@ class TransactionController
 {
     public function index()
     {
-        return View::make('transactions', []);
+        $transactions = new Transaction();
+        return View::make('transactions', ['transactions' => $transactions->index()]);
     }
 
     public function create(): View
